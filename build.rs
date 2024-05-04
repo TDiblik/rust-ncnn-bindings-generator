@@ -2,11 +2,14 @@ use std::{env, path::PathBuf};
 
 fn main() {
     let output_dir = PathBuf::from(env::var("OUT_DIR").unwrap());
-    let ncnn_lib_dir = PathBuf::from(env::var("NCCN_LIB_DIR").unwrap());
-    let ncnn_include_dir = PathBuf::from(env::var("NCCN_INCLUDE_DIR").unwrap());
+    let ncnn_lib_dir =
+        PathBuf::from(env::var("NCNN_LIB_DIR").expect("NCNN_LIB_DIR environment must be set!"));
+    let ncnn_include_dir = PathBuf::from(
+        env::var("NCNN_INCLUDE_DIR").expect("NCNN_INCLUDE_DIR environment must be set!"),
+    );
 
-    println!("cargo:rerun-if-env-changed=NCCN_LIB_DIR");
-    println!("cargo:rerun-if-env-changed=NCCN_INCLUDE_DIR");
+    println!("cargo:rerun-if-env-changed=NCNN_LIB_DIR");
+    println!("cargo:rerun-if-env-changed=NCNN_INCLUDE_DIR");
 
     let c_api_header = ncnn_include_dir.join("c_api.h");
     if !c_api_header.exists() {
