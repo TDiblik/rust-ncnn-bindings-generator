@@ -1,9 +1,12 @@
 [package]
-name = "rust-ncnn-bindings-generator"
-version = "0.1.0"
+name = "ncnn-bindings"
+version = "1.0.0"
 edition = "2021"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+license-file = "./LICENSE"
+description = "Generates bindings for ncnn using bindgen"
+repository = "https://github.com/TDiblik/rust-ncnn-bindings-generator"
+authors = ["Tomáš Diblík <dibla.tomas@post.cz>"]
+publish = false
 
 [build-dependencies]
 bindgen = "0.69.4"
